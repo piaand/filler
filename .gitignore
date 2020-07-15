@@ -1,2 +1,3 @@
 *.o
 *.h.gch
+.DS_Store

@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/16 17:14:44 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/16 17:36:38 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct		s_piece
 }					t_piece;
 
 void	place_piece(t_map **map, t_piece **piece);
-void	read_piece(char *line, t_piece **piecer);
-void	read_map(char *line, t_map **mapper);
+void	read_piece(char *line, t_piece **piece);
+void	read_map(char *line, t_map **map);
 
 #endif

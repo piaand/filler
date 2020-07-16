@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+         #
+#    By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 13:20:53 by pandersi          #+#    #+#              #
-#    Updated: 2020/03/25 16:40:00 by piaandersin      ###   ########.fr        #
+#    Updated: 2020/07/16 15:26:29 by pandersi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 ft_lstmap.c ft_lstlen.c ft_realloc.c ft_isupper.c \
 ft_lstappend.c ft_strchri.c ft_itoa_base.c ft_count_digits.c \
 ft_write_base.c ft_itoa_base_unsigned.c ft_float_to_a.c \
-ft_strset.c
+ft_strset.c get_next_line.c ft_strccpy.c
 
 
 INCLUDE = includes/libft.h
@@ -47,7 +47,7 @@ ft_strsplit.o ft_strsub.o ft_strtrim.o ft_strnstr.o ft_strrchr.o ft_lstnew.o \
 ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o ft_lstlen.o \
 ft_realloc.o ft_isupper.o ft_lstappend.o ft_strchri.o ft_itoa_base.o \
 ft_count_digits.o ft_write_base.o ft_itoa_base_unsigned.o ft_float_to_a.o \
-ft_strset.o
+ft_strset.o get_next_line.o ft_strccpy.o
 
 
 LIB = ar rc $(NAME) $(OBJ)

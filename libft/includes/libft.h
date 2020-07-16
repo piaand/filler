@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 14:11:54 by pandersi          #+#    #+#             */
-/*   Updated: 2020/03/26 13:43:14 by piaandersin      ###   ########.fr       */
+/*   Updated: 2020/07/16 15:21:33 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
+# define BUFF_SIZE 100
 
 typedef struct		s_list
 {
@@ -34,6 +35,7 @@ int					ft_atoi(const char *str);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
 char				*ft_strcpy(char *dst, const char *src);
+size_t				ft_strccpy(char *dst, const char *src, int c);
 int					ft_strcmp(const char *s1, const char *s2);
 char				*ft_strdup(const char *s1);
 void				*ft_memcpy(void *restrict dst, const void *restrict src,
@@ -100,5 +102,6 @@ void				*ft_realloc(void *ptr, size_t res, size_t size);
 int					ft_isupper(int c);
 void				ft_lstappend(t_list **alst, t_list *new);
 char				*ft_write_base(size_t i, size_t len, int base, char *ascii);
+int					get_next_line(const int fd, char **line);
 
 #endif

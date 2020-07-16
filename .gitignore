@@ -1,3 +1,6 @@
 *.o
 *.h.gch
 .DS_Store
+out
+a.out
+pandersi.filler

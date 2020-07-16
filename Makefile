@@ -6,19 +6,19 @@
 #    By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/21 11:22:57 by pandersi          #+#    #+#              #
-#    Updated: 2020/07/14 11:56:05 by pandersi         ###   ########.fr        #
+#    Updated: 2020/07/16 12:30:18 by pandersi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pandersi.filler
 
-SRC = src/..
+SRC = src/ft_filler.c
 
-OBJ = $(patsubst %.c, %.o, $(SRC))
+OBJ = $(patsubst %.c, %.o,$(subst src/,,$(SRC)))
 
 LIB = libft/libft.a
 
-INCLUDE = filler.h
+INCLUDE = includes/filler.h
 
 all: $(NAME)
 .PHONY: all

@@ -5,4 +5,4 @@ out
 a.out
 pandersi.filler
 *.a
-*.trace
+eval_tests/filler.trace

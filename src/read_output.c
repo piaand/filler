@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_output.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/16 17:36:23 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/20 12:25:31 by piaandersin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
 
-void	read_map(char *line, t_map **map)
+void	read_map(char **line, t_map **map)
 {
 	t_map *mapper;
 
@@ -21,7 +21,7 @@ void	read_map(char *line, t_map **map)
 	mapper->read = 1;
 }
 
-void	read_piece(char *line, t_piece **piece)
+void	read_piece(char **line, t_piece **piece)
 {
 	t_piece *piecer;
 

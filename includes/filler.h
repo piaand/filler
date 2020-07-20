@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/16 17:36:38 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/20 12:03:14 by piaandersin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
+# define PLAYER "pandersi.filler"
+
+typedef struct		s_player
+{
+	int				turn;
+	char			player;
+	char			opponent;
+}					t_player;
 
 typedef struct		s_map
 {
@@ -23,8 +31,6 @@ typedef struct		s_map
 	int				row;
 	char			*map;
 	int				read;
-	char			player;
-	char			opponent;
 }					t_map;
 
 typedef struct		s_piece

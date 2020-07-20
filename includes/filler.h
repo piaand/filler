@@ -6,7 +6,7 @@
 /*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/20 12:03:14 by piaandersin      ###   ########.fr       */
+/*   Updated: 2020/07/20 12:35:16 by piaandersin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct		s_piece
 	int				read;
 }					t_piece;
 
-void	place_piece(t_map **map, t_piece **piece);
+void	place_piece(t_map **map, t_piece **piece, t_player **player);
 void	read_piece(char *line, t_piece **piece);
 void	read_map(char *line, t_map **map);
 

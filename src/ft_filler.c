@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_filler.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/16 17:46:26 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/20 10:26:28 by piaandersin      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	set_player(t_map *map, char *line)
 
 void	init_player(t_map **map, t_piece **piece)
 {
-	if (!(*map = (t_map*)ft_memmalloc(sizeof(t_map))))
+	if (!(*map = (t_map*)ft_memalloc(sizeof(t_map))))
 		perror("ERROR");
-	if (!(*piece = (t_piece*)ft_memmalloc(sizeof(t_piece))))
+	if (!(*piece = (t_piece*)ft_memalloc(sizeof(t_piece))))
 		perror("ERROR");
 	(*(map))->read = 0;
 	(*(piece))->read = 0;

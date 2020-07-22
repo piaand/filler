@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 12:29:42 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:02:25 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 # include "../libft/includes/libft.h"
 # define PLAYER "pandersi.filler"
 # define MAPMARKS ".xXoO"
@@ -44,5 +45,6 @@ typedef struct		s_piece
 int		place_piece(t_map **map, t_piece **piece, t_player **player);
 int		read_map(t_map **map);
 int		read_piece(t_piece **piece);
+int		*return_coordinates(char *str, int *result);
 
 #endif

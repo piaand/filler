@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_output.c                                      :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 12:49:28 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:05:13 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,9 @@ int *return_coordinates(char *str, int *result)
 ** row amount at map struct. Returns 1 when layout is finished.
 */
 
-int		build_map_layout(t_map **map, char *str)
+int		buid_map_layout(t_map **map, char *str)
 {
 	static int	row_count;
-	int 		i;
 	int 		len;
 	char		*row;
 	char 		**layout;
@@ -91,9 +90,10 @@ void	init_map(t_map **map, char *str)
 	free(coordinates);
 }
 
+
 /*
-** Tries to find the map from standard output. When finds the map dimensions
-** reads inits the map layout and reads the layout according to the dimensions.
+** Tries to find the map from standard output. When finds the map dimensions,
+** inits the map layout and reads the layout according to the dimensions.
 */
 
 int	read_map(t_map **map)
@@ -113,25 +113,5 @@ int	read_map(t_map **map)
 			map_read = buid_map_layout(map, line);
 	}
 	mapper->read = map_read;
-	return (1);
-}
-
-int	read_piece(t_piece **piece)
-{
-	int		ret;
-	int		piece_read;
-	char	*line;
-	t_piece	*piecer;
-
-	piecer = *piece;
-	piece_read = 0;
-	while((ret = get_next_line(1, &line) > 0) && !(piece_read)) 
-	{
-		if (ft_strncmp(line, "Plateau ", 8))
-			init_map(map, line);
-		else if (mapper->layout)
-			piece_read = buid_map_layout(map, line);
-	}
-	piecer->read = piece_read;
 	return (1);
 }

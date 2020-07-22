@@ -6,12 +6,11 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 11:25:17 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:06:41 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
-#include <stdio.h>
 
 /*
 ** Gives the player and opponet x or o depending their player number
@@ -19,7 +18,6 @@
 
 void	set_player(t_player **player)
 {
-	int		i;
 	int 	ret;
 	int 	defined;
 	char 	*line;
@@ -55,11 +53,12 @@ void	init_game(t_map **map, t_piece **piece, t_player **player)
 		perror("ERROR");
 	if (!(*piece = (t_piece*)ft_memalloc(sizeof(t_piece))))
 		perror("ERROR");
-	if (!(*piece = (t_player*)ft_memalloc(sizeof(t_player))))
+	if (!(*player = (t_player*)ft_memalloc(sizeof(t_player))))
 		perror("ERROR");
 	(*(map))->read = 0;
 	(*(map))->layout = NULL;
 	(*(piece))->read = 0;
+	(*(piece))->layout = NULL;
 }
 
 /*
@@ -69,7 +68,6 @@ void	init_game(t_map **map, t_piece **piece, t_player **player)
 
 int		main(void)
 {
-	int			ret;
 	int 		game_ongoing;
 	t_map		*map;
 	t_piece		*piece;

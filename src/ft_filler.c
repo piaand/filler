@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:06:41 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:23:13 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	set_player(t_player **player)
 		}
 		ft_strdel(&line);
 	}
+	(*(player))->turn = 0;
 }
 
 /*

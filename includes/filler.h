@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:02:25 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:31:46 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct		s_player
 {
 	char			player;
 	char			opponent;
+	int				turn;
 }					t_player;
 
 typedef struct		s_map

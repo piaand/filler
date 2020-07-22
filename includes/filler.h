@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: piaandersin <piaandersin@student.42.fr>    +#+  +:+       +#+        */
+/*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/20 12:35:16 by piaandersin      ###   ########.fr       */
+/*   Updated: 2020/07/22 11:25:05 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 typedef struct		s_player
 {
-	int				turn;
 	char			player;
 	char			opponent;
 }					t_player;
@@ -29,7 +28,7 @@ typedef struct		s_map
 {
 	int				col;
 	int				row;
-	char			*map;
+	char			**layout;
 	int				read;
 }					t_map;
 
@@ -37,12 +36,12 @@ typedef struct		s_piece
 {
 	int				col;
 	int				row;
-	char			*piece;
+	char			**layout;
 	int				read;
 }					t_piece;
 
-void	place_piece(t_map **map, t_piece **piece, t_player **player);
-void	read_piece(char *line, t_piece **piece);
-void	read_map(char *line, t_map **map);
+int		place_piece(t_map **map, t_piece **piece, t_player **player);
+int		read_map(t_map **map);
+int		read_piece(t_piece **piece);
 
 #endif

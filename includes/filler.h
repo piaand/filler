@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 11:25:05 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:29:42 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include "../libft/includes/libft.h"
 # define PLAYER "pandersi.filler"
+# define MAPMARKS ".xXoO"
 
 typedef struct		s_player
 {

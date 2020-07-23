@@ -6,11 +6,25 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:23:13 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:09:44 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/filler.h"
+
+/*
+** This is for error handling.
+*/
+
+void	write_to_log(char *mssg)
+{
+	FILE 		*fp;  
+
+	fp = fopen("log.txt", "a");//opening file, a append
+   	fprintf(fp, "%s", mssg);
+	fprintf(fp, "\n");
+	fclose(fp);//closing file  
+}
 
 /*
 ** Gives the player and opponet x or o depending their player number
@@ -74,8 +88,10 @@ int		main(void)
 	t_piece		*piece;
 	t_player	*player;
 
+	write_to_log("Starting the player.");
 	init_game(&map, &piece, &player);
 	set_player(&player);
+	write_to_log("Player is set.");
 	game_ongoing = 1;
 	while (game_ongoing)
 	{

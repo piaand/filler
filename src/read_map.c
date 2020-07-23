@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:05:13 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:08:51 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	read_map(t_map **map)
 
 	mapper = *map;
 	map_read = 0;
+	write_to_log("Starts to read map.");
 	while((ret = get_next_line(1, &line) > 0) && !(map_read)) 
 	{
 		if (ft_strncmp(line, "Plateau ", 8))

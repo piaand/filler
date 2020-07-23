@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 11:52:23 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:31:46 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:08:30 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_piece
 	int				read;
 }					t_piece;
 
+void	write_to_log(char *mssg);
 int		place_piece(t_map **map, t_piece **piece, t_player **player);
 int		read_map(t_map **map);
 int		read_piece(t_piece **piece);

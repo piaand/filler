@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/23 11:08:51 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:37:57 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		buid_map_layout(t_map **map, char *str)
 	char		*row;
 	char 		**layout;
 
+	write_to_log("Add a new row to map.");
 	len = (*(map))->col;
 	row = ft_strsub(str, 4, len);
 	layout = (*(map))->layout;
@@ -79,6 +80,7 @@ void	init_map(t_map **map, char *str)
 	int 	*coordinates;
 	char	**map_layout;
 
+	write_to_log("Init new map.");
 	if (!(coordinates = (int*)ft_memalloc(sizeof(int) * 2 + 2)))
 		perror("ERROR");
 	coordinates = return_coordinates(str, coordinates);
@@ -108,11 +110,15 @@ int	read_map(t_map **map)
 	write_to_log("Starts to read map.");
 	while((ret = get_next_line(1, &line) > 0) && !(map_read)) 
 	{
+		write_to_log("Made in");
+		write_to_log(line);
 		if (ft_strncmp(line, "Plateau ", 8))
 			init_map(map, line);
 		else if (mapper->layout)
 			map_read = buid_map_layout(map, line);
 	}
+	write_to_log("Went out");
+	write_to_log(ft_itoa(ret));
 	mapper->read = map_read;
 	return (1);
 }

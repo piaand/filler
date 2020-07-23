@@ -1,0 +1,4 @@
+Starting the player.
+Player is set.
+Starts to read map.
+Went out

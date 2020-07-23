@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 16:46:21 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:51:33 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:22:17 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int	place_piece(t_map **map, t_piece **piece, t_player **player)
 	print_coordinates(3, 3);
 	(*(player))->turn++;
 	clear_map_piece(map, piece);
+	write_to_log("Cleared map and piece.");
 	return(1);
 }

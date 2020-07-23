@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 14:39:09 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/22 15:06:04 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:21:21 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	read_piece(t_piece **piece)
 
 	piecer = *piece;
 	piece_read = 0;
+	write_to_log("Starts to read piece.");
 	while((ret = get_next_line(1, &line) > 0) && !(piece_read)) 
 	{
 		if (ft_strncmp(line, "Piece ", 6))

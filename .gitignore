@@ -6,3 +6,4 @@ a.out
 pandersi.filler
 *.a
 eval_tests/filler.trace
+log.txt

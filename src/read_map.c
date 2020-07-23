@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/23 11:37:57 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/23 14:13:28 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ void	init_map(t_map **map, char *str)
 		perror("ERROR");
 	(*(map))->layout = map_layout;
 	free(coordinates);
+	write_to_log("Coordinates:");
+	write_to_log(ft_itoa((*(map))->col));
+	write_to_log(ft_itoa((*(map))->row));
 }
 
 
@@ -108,9 +111,8 @@ int	read_map(t_map **map)
 	mapper = *map;
 	map_read = 0;
 	write_to_log("Starts to read map.");
-	while((ret = get_next_line(1, &line) > 0) && !(map_read)) 
+	while((ret = get_next_line(0, &line) > 0) && !(map_read)) 
 	{
-		write_to_log("Made in");
 		write_to_log(line);
 		if (ft_strncmp(line, "Plateau ", 8))
 			init_map(map, line);

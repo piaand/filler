@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/23 14:13:28 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/07/24 16:13:29 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,18 +81,23 @@ void	init_map(t_map **map, char *str)
 	char	**map_layout;
 
 	write_to_log("Init new map.");
-	if (!(coordinates = (int*)ft_memalloc(sizeof(int) * 2 + 2)))
+	if (ft_strncmp(str, "Plateau ", 8))
+	{
+		if (!(coordinates = (int*)ft_memalloc(sizeof(int) * 2 + 2)))
+			perror("ERROR");
+		coordinates = return_coordinates(str, coordinates);
+		(*(map))->col = coordinates[0];
+		(*(map))->row = coordinates[1];
+		if (!(map_layout = (char**)ft_memalloc(sizeof(char*) * ((*(map))->row) + 2)))
+			perror("ERROR");
+		(*(map))->layout = map_layout;
+		free(coordinates);
+		write_to_log("Coordinates:");
+		write_to_log(ft_itoa((*(map))->col));
+		write_to_log(ft_itoa((*(map))->row));
+	}
+	else
 		perror("ERROR");
-	coordinates = return_coordinates(str, coordinates);
-	(*(map))->col = coordinates[0];
-	(*(map))->row = coordinates[1];
-	if (!(map_layout = (char**)ft_memalloc(sizeof(char*) * ((*(map))->row) + 2)))
-		perror("ERROR");
-	(*(map))->layout = map_layout;
-	free(coordinates);
-	write_to_log("Coordinates:");
-	write_to_log(ft_itoa((*(map))->col));
-	write_to_log(ft_itoa((*(map))->row));
 }
 
 
@@ -110,15 +115,10 @@ int	read_map(t_map **map)
 
 	mapper = *map;
 	map_read = 0;
+	ret = get_next_line(0, &line);
 	write_to_log("Starts to read map.");
-	while((ret = get_next_line(0, &line) > 0) && !(map_read)) 
-	{
-		write_to_log(line);
-		if (ft_strncmp(line, "Plateau ", 8))
-			init_map(map, line);
-		else if (mapper->layout)
-			map_read = buid_map_layout(map, line);
-	}
+	init_map(map, line);
+	buid_map_layout(map, &line);
 	write_to_log("Went out");
 	write_to_log(ft_itoa(ret));
 	mapper->read = map_read;

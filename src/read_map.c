@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/24 16:13:29 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/08/10 15:50:12 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,18 +109,16 @@ void	init_map(t_map **map, char *str)
 int	read_map(t_map **map)
 {
 	int		ret;
-	int		map_read;
 	char	*line;
 	t_map	*mapper;
 
 	mapper = *map;
-	map_read = 0;
-	ret = get_next_line(0, &line);
 	write_to_log("Starts to read map.");
+	ret = get_next_line(0, &line);
 	init_map(map, line);
 	buid_map_layout(map, &line);
 	write_to_log("Went out");
 	write_to_log(ft_itoa(ret));
-	mapper->read = map_read;
+	mapper->read = 1;
 	return (1);
 }

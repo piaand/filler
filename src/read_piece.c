@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 14:39:09 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/23 14:00:53 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/08/12 17:33:08 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,26 @@
 ** row amount at piece struct. Returns 1 when layout is finished.
 */
 
-int		build_piece_layout(t_piece **piece, char *str)
+int		build_piece_layout(t_piece **piece)
 {
 	static int	row_count;
 	int 		len;
+	int 		ret;
 	char		*row;
+	char		*row_clean;
 	char 		**layout;
 
 	len = (*(piece))->col;
-	row = ft_strsub(str, 0, len);
 	layout = (*(piece))->layout;
-	if (row_count < ((*(piece))->row))
+	while(row_count < ((*(piece))->row))
 	{
-		layout[row_count] = row;
+		ret = get_next_line(0, &row);
+		row_clean = ft_strsub(row, 0, len);
+		layout[row_count] = row_clean;
+		write_to_log(row_clean);
 		row_count++;
-		return (0);
 	}
-	else
-	{
-		row_count = 0;
-		return (1);
-	}
+	return (1);
 }
 
 /*
@@ -49,14 +48,18 @@ void	init_piece(t_piece **piece, char *str)
 	int 	*coordinates;
 	char	**piece_layout;
 
+	write_to_log("Initing piece");
 	if (!(coordinates = (int*)ft_memalloc(sizeof(int) * 2 + 2)))
 		perror("ERROR");
 	coordinates = return_coordinates(str, coordinates);
-	(*(piece))->col = coordinates[0];
-	(*(piece))->row = coordinates[1];
+	(*(piece))->row = coordinates[0];
+	(*(piece))->col = coordinates[1];
 	if (!(piece_layout = (char**)ft_memalloc(sizeof(char*) * ((*(piece))->row) + 2)))
 		perror("ERROR");
 	(*(piece))->layout = piece_layout;
+	write_to_log("Piece coordinates");
+	write_to_log(ft_itoa((*(piece))->col));
+	write_to_log(ft_itoa((*(piece))->row));
 	free(coordinates);
 }
 
@@ -76,13 +79,19 @@ int	read_piece(t_piece **piece)
 	piecer = *piece;
 	piece_read = 0;
 	write_to_log("Starts to read piece.");
-	while((ret = get_next_line(0, &line) > 0) && !(piece_read)) 
+	ret = get_next_line(0, &line);
+	if (!(ft_strncmp(line, "Piece ", 6)))
+		init_piece(piece, line);
+	else
 	{
-		if (ft_strncmp(line, "Piece ", 6))
-			init_piece(piece, line);
-		else if (piecer->layout)
-			piece_read = build_piece_layout(piece, line);
-	}
+		ft_strdel(&line);
+		perror("ERROR");
+	}	
+	if (piecer->layout)
+		piece_read = build_piece_layout(piece);
+	else
+		perror("ERROR");
 	piecer->read = piece_read;
+	write_to_log("Piece is now read!");
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/08/12 15:34:20 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/08/12 16:39:34 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,9 +98,9 @@ int		main(void)
 			write_to_log("New round!");
 			if (!(map->read))
 				game_ongoing = read_map(&map);
-			else if (!(piece->read))
+			if (map->read && !(piece->read))
 				game_ongoing = read_piece(&piece);
-			else
+			if (map->read && piece->read)
 				game_ongoing = place_piece(&map, &piece, &player);
 		}
 	}

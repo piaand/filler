@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 12:03:02 by pandersi          #+#    #+#             */
-/*   Updated: 2020/07/23 15:05:04 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/08/12 15:34:20 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	write_to_log(char *mssg)
 void	set_player(t_player **player)
 {
 	int 	ret;
-	int 	defined;
 	char 	*line;
 
 	(*(player))->turn = 0;
@@ -93,8 +92,10 @@ int		main(void)
 	if (!(map->read) && !(piece->read) && player->player)
 	{
 		game_ongoing = 1;
+		write_to_log("Game starts!");
 		while (game_ongoing)
 		{
+			write_to_log("New round!");
 			if (!(map->read))
 				game_ongoing = read_map(&map);
 			else if (!(piece->read))

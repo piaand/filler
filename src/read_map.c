@@ -6,7 +6,7 @@
 /*   By: pandersi <pandersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 17:01:53 by pandersi          #+#    #+#             */
-/*   Updated: 2020/08/10 15:50:12 by pandersi         ###   ########.fr       */
+/*   Updated: 2020/08/12 16:22:01 by pandersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,27 +47,39 @@ int *return_coordinates(char *str, int *result)
 ** row amount at map struct. Returns 1 when layout is finished.
 */
 
-int		buid_map_layout(t_map **map, char *str)
+void		buid_map_layout(t_map **map)
 {
-	static int	row_count;
+	int			row_count;
 	int 		len;
+	int 		ret;
 	char		*row;
+	char		*row_clean;
 	char 		**layout;
 
-	write_to_log("Add a new row to map.");
-	len = (*(map))->col;
-	row = ft_strsub(str, 4, len);
+	write_to_log("Add a new map layout.");
+	row_count = 0;
 	layout = (*(map))->layout;
-	if (row_count < ((*(map))->row))
+	len = (*(map))->col;
+	ret = get_next_line(0, &row);
+	write_to_log(row);
+	if (!(ft_strlen(row) > (size_t)len))
 	{
-		layout[row_count] = row;
-		row_count++;
-		return (0);
+		ft_strdel(&row);
+		perror("ERROR");
 	}
 	else
 	{
-		row_count = 0;
-		return (1);
+		write_to_log("Started to fill rows.");
+		while(row_count < (*(map))->row)
+		{
+			ret = get_next_line(0, &row);
+			row_clean = ft_strsub(row, 4, len);
+			write_to_log(row_clean);
+			layout[row_count] = row_clean;
+			ft_strdel(&row);
+			ft_strdel(&row_clean);
+			row_count++;
+		}
 	}
 }
 
@@ -75,19 +87,24 @@ int		buid_map_layout(t_map **map, char *str)
 ** Creates a char array according the x and y coordinates given by the game.
 */
 
-void	init_map(t_map **map, char *str)
+void	init_map(t_map **map)
 {
+	int		ret;
+	char	*str;
 	int 	*coordinates;
 	char	**map_layout;
 
 	write_to_log("Init new map.");
-	if (ft_strncmp(str, "Plateau ", 8))
+	ret = get_next_line(0, &str);
+	write_to_log(str);
+	if (ret != -1 && ft_strncmp(str, "Plateau", 7) == 0)
 	{
+		write_to_log("Valid mapinstructions.");
 		if (!(coordinates = (int*)ft_memalloc(sizeof(int) * 2 + 2)))
 			perror("ERROR");
 		coordinates = return_coordinates(str, coordinates);
-		(*(map))->col = coordinates[0];
-		(*(map))->row = coordinates[1];
+		(*(map))->row = coordinates[0];
+		(*(map))->col = coordinates[1];
 		if (!(map_layout = (char**)ft_memalloc(sizeof(char*) * ((*(map))->row) + 2)))
 			perror("ERROR");
 		(*(map))->layout = map_layout;
@@ -95,9 +112,13 @@ void	init_map(t_map **map, char *str)
 		write_to_log("Coordinates:");
 		write_to_log(ft_itoa((*(map))->col));
 		write_to_log(ft_itoa((*(map))->row));
+		ft_strdel(&str);
 	}
 	else
+	{
+		ft_strdel(&str);
 		perror("ERROR");
+	}
 }
 
 
@@ -108,17 +129,13 @@ void	init_map(t_map **map, char *str)
 
 int	read_map(t_map **map)
 {
-	int		ret;
-	char	*line;
 	t_map	*mapper;
 
 	mapper = *map;
 	write_to_log("Starts to read map.");
-	ret = get_next_line(0, &line);
-	init_map(map, line);
-	buid_map_layout(map, &line);
-	write_to_log("Went out");
-	write_to_log(ft_itoa(ret));
+	init_map(map);
+	buid_map_layout(map);
+	write_to_log("Map is now read.");
 	mapper->read = 1;
 	return (1);
 }
